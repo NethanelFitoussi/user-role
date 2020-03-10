@@ -9,3 +9,28 @@
 
 ## Installation Laravel
 composer create-project --prefer-dist laravel/laravel . "5.8.*"
+
+## Installation Spatie
+
+- package and config 
+
+composer require spatie/laravel-permission
+php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+
+- User auth migration
+
+php artisan make:auth
+
+ - Add on AppServiceProvider
+ 
+use Illuminate\Support\Facades\Schema;
+AND 
+public function boot()
+{
+    Schema::defaultStringLength(191);
+}
+ 
+-Migration
+
+php artisan migrate
+
