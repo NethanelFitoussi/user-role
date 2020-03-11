@@ -30,7 +30,21 @@ public function boot()
     Schema::defaultStringLength(191);
 }
  
--Migration
+- Migration
 
 php artisan migrate
 
+## Create page with authorisation admin 
+
+- app/Httpl/Kernel.php
+
+protected $routeMiddleware = [
+    // ...
+    'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
+    'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
+    'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
+];
+
+- web.php
+
+->middleware('role:admin');
