@@ -18,3 +18,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/new_account', 'CreateAccountController@index')->name('new_account')->middleware('role:admin');

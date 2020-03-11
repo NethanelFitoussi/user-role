@@ -69,7 +69,7 @@
                         @endguest
                         @hasrole('admin')
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('new_account') }}">{{ __('Register') }}</a>
+                                <a class="nav-link" href="{{ route('new_account') }}">{{ __('Create Account') }}</a>
                             </li>
                         @endhasrole
                     </ul>
