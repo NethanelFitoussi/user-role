@@ -10,13 +10,19 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::redirect('/', '/en');
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['prefix' => '{lang}'], function () {
+
+    Route::get('/', function () {
+        return view('welcome');
+    });
+
+    Auth::routes();
+
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::get('/new_account', 'CreateAccountController@index')->name('new_account')->middleware('role:admin');
+
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/new_account', 'CreateAccountController@index')->name('new_account')->middleware('role:admin');
